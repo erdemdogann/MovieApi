@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.movieapi.view.main.MainFragment"
+        android:name="com.example.movieapi.presentation.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/allMovieFragment"
-        android:name="com.example.movieapi.view.allmovie.AllMovieFragment"
+        android:name="com.example.movieapi.presentation.allmovie.AllMovieFragment"
         android:label="fragment_allmovie"
         tools:layout="@layout/fragment_allmovie" />
 </navigation>

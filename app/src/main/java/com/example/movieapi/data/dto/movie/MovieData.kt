@@ -1,4 +1,4 @@
-package com.example.movieapi.data
+package com.example.movieapi.data.dto.movie
 
 data class MovieData(
     val page: Int?,

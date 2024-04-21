@@ -73,6 +73,9 @@ dependencies {
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
 
+    //binding lib
+    implementation("com.github.Zhuinden:fragmentviewbindingdelegate-kt:1.0.2")
+
 }
 kapt {
     correctErrorTypes = true
