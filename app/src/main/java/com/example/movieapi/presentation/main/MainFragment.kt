@@ -9,10 +9,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.movieapi.R
 import com.example.movieapi.databinding.FragmentMainBinding
+import com.example.movieapi.presentation.adapter.MainBigMovieCardAdapter
 import com.example.movieapi.presentation.adapter.MainMovieAdapter
 import com.example.movieapi.presentation.adapter.MainSeriesAdapter
+import com.example.movieapi.presentation.adapter.MainTitleCardAdapter
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -22,9 +25,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val binding by viewBinding(FragmentMainBinding::bind)
     private val viewModel by viewModels<MainViewModel>()
+    private val bigScreenAdapter = MainBigMovieCardAdapter()
     private val movieAdapter = MainMovieAdapter()
     private val seriesAdapter = MainSeriesAdapter()
-    private val concatAdapter = ConcatAdapter(movieAdapter, seriesAdapter)
+    private var movieTitleAdapter = MainTitleCardAdapter("Movie")
+    private var seriesTitleAdapter = MainTitleCardAdapter("Series")
+    private val concatAdapter =
+        ConcatAdapter(movieTitleAdapter, movieAdapter, seriesTitleAdapter, seriesAdapter)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,9 +41,17 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun setupAdapters() {
-        binding.newMovie.apply {
-            adapter = concatAdapter
-            layoutManager = LinearLayoutManager(requireContext())
+        binding.apply {
+            newMovie.apply {
+                adapter = concatAdapter
+                layoutManager = LinearLayoutManager(requireContext())
+            }
+            bigScreen.apply {
+                adapter = bigScreenAdapter
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                PagerSnapHelper().attachToRecyclerView(this)
+            }
         }
     }
 
@@ -45,6 +60,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             viewModel.mainState.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect {
                 movieAdapter.posterPathList = it.movieResult
                 seriesAdapter.posterPathList = it.seriesResult
+                bigScreenAdapter.posterPathList = it.movieResult
             }
 
             /*repeatOnLifecycle(Lifecycle.State.STARTED){
@@ -58,8 +74,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun setupListener() {
-        binding.seeAll.setOnClickListener {
+
+        movieTitleAdapter.onClick = {
             findNavController().navigate(MainFragmentDirections.seeAllMovies())
+        }
+
+        seriesTitleAdapter.onClick = {
+            findNavController().navigate(MainFragmentDirections.seeAllSeries())
         }
     }
 }
