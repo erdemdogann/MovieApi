@@ -6,7 +6,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.example.movieapi.data.api.MovieApi
-import com.example.movieapi.data.paging.AllMoviePagingSource
+import com.example.movieapi.data.paging.allmovie.AllMoviePagingSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

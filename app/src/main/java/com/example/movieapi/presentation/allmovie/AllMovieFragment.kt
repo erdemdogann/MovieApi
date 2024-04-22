@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movieapi.R
-import com.example.movieapi.data.paging.PagingAdapter
+import com.example.movieapi.data.paging.allmovie.AllMoviePagingAdapter
 import com.example.movieapi.databinding.FragmentAllmovieBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,7 +19,7 @@ class AllMovieFragment : Fragment(R.layout.fragment_allmovie) {
 
     private val binding by viewBinding(FragmentAllmovieBinding::bind)
     private val viewModel by viewModels<AllMovieViewModel>()
-    private val pagingAdapter = PagingAdapter()
+    private val pagingAdapter = AllMoviePagingAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
