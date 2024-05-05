@@ -21,10 +21,18 @@
         android:id="@+id/allMovieFragment"
         android:name="com.example.movieapi.presentation.allmovie.AllMovieFragment"
         android:label="fragment_allmovie"
-        tools:layout="@layout/fragment_allmovie" />
+        tools:layout="@layout/fragment_allmovie">
+        <action
+            android:id="@+id/movieBackMain"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/allSerieFragment"
         android:name="com.example.movieapi.presentation.allserie.AllSerieFragment"
         android:label="fragment_all_serie"
-        tools:layout="@layout/fragment_all_serie" />
+        tools:layout="@layout/fragment_all_serie">
+        <action
+            android:id="@+id/seriesBackMain"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

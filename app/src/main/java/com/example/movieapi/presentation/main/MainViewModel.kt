@@ -32,7 +32,8 @@ class MainViewModel @Inject constructor(
             _mainState.update { state ->
                 state.copy(
                     movieResult = resultsMovie.await()?.map { it.poster_path }.orEmpty(),
-                    seriesResult = resultSeries.await()?.map { it.poster_path }.orEmpty()
+                    seriesResult = resultSeries.await()?.map { it.poster_path }.orEmpty(),
+                    allMovie = resultsMovie.await().orEmpty()
                 )
             }
         }

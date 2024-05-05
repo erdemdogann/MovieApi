@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textSize="28dp"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -17,9 +17,9 @@
         android:id="@+id/seeAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:text="TextView"
+        android:text="TextView"
         android:textColor="#3D079C"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/titleName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/titleName" />

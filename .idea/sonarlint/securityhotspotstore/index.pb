@@ -94,3 +94,5 @@ Oapp/src/main/java/com/example/movieapi/presentation/adapter/MainMovieAdapter.kt
 Zapp/src/main/java/com/example/movieapi/presentation/adapter/holder/HorizontalCardHolder.kt,c\9\c90f1ecad74e343e6c8156c8f271ca1c43c123da
 Å
 Qapp/src/main/java/com/example/movieapi/presentation/allserie/AllSerieViewModel.kt,4\5\45411f930d33a484cf25b62ce1512ea8b62df3f0
+y
+Iapp/src/main/java/com/example/movieapi/presentation/main/MainViewModel.kt,f\2\f21b668e14bf6dfa0c3bcc6299c0c6c742d9d517

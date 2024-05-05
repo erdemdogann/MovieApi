@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.movieapi.R
 import com.example.movieapi.data.paging.allseries.AllSeriesPagingAdapter
@@ -35,9 +36,18 @@ class AllSerieFragment : Fragment(R.layout.fragment_all_serie) {
     }
 
     private fun setupAdapter() {
-        binding.allSeries.apply {
-            adapter = pagingAdapter
-            layoutManager = GridLayoutManager(requireContext(), 2)
+
+        binding.apply {
+            back.setOnClickListener {
+                findNavController().navigate(AllSerieFragmentDirections.seriesBackMain())
+            }
+
+            mainTitle.text = "All Serie"
+
+            allSeries.apply {
+                adapter = pagingAdapter
+                layoutManager = GridLayoutManager(requireContext(), 2)
+            }
         }
     }
 

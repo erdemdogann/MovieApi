@@ -41,6 +41,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun setupAdapters() {
+
         binding.apply {
             newMovie.apply {
                 adapter = concatAdapter
@@ -60,7 +61,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             viewModel.mainState.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect {
                 movieAdapter.posterPathList = it.movieResult
                 seriesAdapter.posterPathList = it.seriesResult
-                bigScreenAdapter.posterPathList = it.movieResult
+                bigScreenAdapter.posterPathList = it.allMovie
             }
 
             /*repeatOnLifecycle(Lifecycle.State.STARTED){

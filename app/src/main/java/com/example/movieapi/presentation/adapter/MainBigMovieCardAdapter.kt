@@ -3,21 +3,27 @@ package com.example.movieapi.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.movieapi.data.dto.movie.Result
 import com.example.movieapi.databinding.MainMovieCardBinding
 import com.example.movieapi.loadImage
 
-class MainBigMovieCardAdapter : RecyclerView.Adapter<MainBigMovieCardAdapter.Holder>() {
+class MainBigMovieCardAdapter() : RecyclerView.Adapter<MainBigMovieCardAdapter.Holder>() {
 
-    var posterPathList: List<String> = mutableListOf()
+    var posterPathList: List<Result> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    class Holder(private val binding: MainMovieCardBinding) :
+
+    inner class Holder(private val binding: MainMovieCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(posterPath: String) {
-            binding.movieImage.loadImage(posterPath)
+        fun bind(posterPath: Result) {
+            binding.apply {
+                movieImage.loadImage(posterPath.poster_path)
+                movieName.text = posterPath.title
+                movieType.text = posterPath.original_language
+            }
         }
     }
 
